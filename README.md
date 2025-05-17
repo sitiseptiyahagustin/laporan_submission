@@ -10,7 +10,7 @@ Masalah ini perlu diselesaikan karena pemilihan destinasi yang tidak sesuai dapa
 
 Masalah tersebut diselesaikan dengan membangun sistem rekomendasi berbasis machine learning yang menganalisis fitur-fitur tempat wisata seperti deskripsi, kategori, dan kata kunci. Dengan pendekatan content-based filtering dan transformasi teks menggunakan TF-IDF, sistem dapat menghitung kemiripan antar destinasi dan menyarankan pilihan yang relevan kepada pengguna.
 
-Menurut Shrestha et al. [[1] https://doi.org/10.3390/computation12030059], pendekatan berbasis data dan machine learning dapat meningkatkan akurasi rekomendasi destinasi wisata dengan mempertimbangkan preferensi pengguna dan konteks perjalanan. Selain itu, Herzog dan Wörndl [[2] https://doi.org/10.1145/2645710.2645740] menyatakan bahwa kombinasi pendekatan content-based dan collaborative filtering mampu meningkatkan relevansi hasil rekomendasi.
+Menurut Shrestha et al. [[1] https://doi.org/10.3390/computation12030059], pendekatan berbasis data dan machine learning dapat meningkatkan akurasi rekomendasi destinasi wisata dengan mempertimbangkan preferensi pengguna dan konteks perjalanan. 
 
 ## Business Understanding
 
@@ -39,8 +39,6 @@ Menurut Shrestha et al. [[1] https://doi.org/10.3390/computation12030059], pende
     2. **Pendekatan Visualisasi dan Eksplorasi Data**
        Dengan menerapkan visualisasi grafik distribusi, sistem mampu memberikan wawasan tambahan terhadap karakteristik destinasi yang populer atau saling berkaitan.
 
-    3. **Potensi Pengembangan (Hybrid Recommender System)**
-       Meskipun proyek saat ini menggunakan pendekatan berbasis konten, sistem ini dapat dikembangkan lebih lanjut menjadi model hybrid, yang menggabungkan teknik collaborative filtering untuk menghasilkan rekomendasi yang lebih akurat dengan mempertimbangkan interaksi pengguna.
 
 ## Data Understanding
 
@@ -265,7 +263,7 @@ visualisasi menghitung cosine similarity antara tempat-tempat wisata menggunakan
 
 ## Modeling
 
-Pada tahap ini, dibangun dan dievaluasi dua sistem rekomendasi yang berbeda, yaitu **Content-based Filtering** dan **Collaborative Filtering**. Kedua pendekatan ini menggunakan metode dan algoritma yang khas untuk memberikan rekomendasi destinasi wisata kepada pengguna.
+Pada tahap ini, dibangun dan dievaluasi dua sistem rekomendasi yang berbeda, yaitu **Content-based Filtering** 
 
 ### 1. Content-based Filtering
 
@@ -336,8 +334,7 @@ Sebagai contoh, kami melakukan rekomendasi untuk destinasi wisata **Monumen Nasi
 
 Evaluasi merupakan langkah untuk menilai sejauh mana performa sistem rekomendasi yang telah dibangun memenuhi tujuan yang telah ditetapkan. Dalam proyek ini, terdapat tiga metrik evaluasi utama yaitu:
 - **Precision** untuk menilai pendekatan sistem **Content-based Filtering**
-- **Root Mean Squared Error (RMSE)** serta **Mean Absolute Error (MAE)** untuk menilai pendekatan sistem rekomendasi **Collaborative Filtering**.
-
+  
 ## Evaluasi Model Content-Based Filtering
 ### **Evaluasi Precision\@10 dengan Konten Deskripsi dan Kategori**
 
