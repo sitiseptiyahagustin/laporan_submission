@@ -240,7 +240,8 @@ tfidf_matrix.shape
 ```
 visualisasi mengubah Combined_Text menjadi vektor TF-IDF sebagai berikut.
 
-![Normalisasi Price Tag](/img/chage.png)
+![image](https://github.com/user-attachments/assets/ee617dac-3fce-403b-be20-ce52225b8a61)
+
 
 - **Alasan**: Menggunakan TF-IDF memungkinkan model untuk menangkap pentingnya kata-kata dalam konteks setiap destinasi wisata, sehingga meningkatkan kemampuan sistem rekomendasi untuk menemukan kesamaan antar destinasi berdasarkan deskripsi teks.
 
@@ -255,9 +256,10 @@ cosine_sim_df = pd.DataFrame(cosine_sim, index=data_tourism_with_id_clean['Place
 print('Shape:', cosine_sim_df.shape)
 cosine_sim_df.sample(5, axis=1).sample(10, axis=0)
 ```
-visualisasi menghitung cosine similarity antara tempat-tempat wisata menggunakan TF-IDF matrix sebagai berikut.
+visualisasi menghitung cosine similarity antara tempat-tempat wisata menggunakan TF-IDF matrix 
 
-![Normalisasi Price Tag](/img/cons.png)
+![image](https://github.com/user-attachments/assets/5ade9249-6f97-486d-9a91-2047c724fa51)
+
 
 - **Alasan**: Menghitung cosine similarity memungkinkan sistem untuk mengukur seberapa mirip deskripsi tempat wisata satu dengan yang lainnya berdasarkan teks, yang menjadi dasar rekomendasi dalam model content-based filtering.
 
@@ -316,19 +318,13 @@ Sebagai contoh, kami melakukan rekomendasi untuk destinasi wisata **Monumen Nasi
 
 **Kelebihan dan Kekurangan:**
 
-| **Kelebihan**                                                                 | **Kekurangan**
-|---------------------------------------------------------------------------------------------------------------------------------| 
-| Rekomendasi disesuaikan dengan preferensi spesifik pengguna berdasarkan     | Sistem sangat bergantung pada kualitas dan kelengkapan  
-  histori atau atribut item yang disukai.                                       atribut item (metadata). Jika data deskriptif terbatas,
-                                                                                hasil rekomendasi kurang akurat. 
-| Bisa memberikan rekomendasi bahkan jika hanya satu pengguna yang aktif,     | Hanya merekomendasikan item yang sangat mirip dengan yang
-  karena tidak membutuhkan data dari pengguna lain.                             sudah disukai pengguna, sehingga sulit menemukan  hal
-                                                                                baru atau berbeda (kurang eksplorasi).   
-| Jika item baru memiliki metadata (fitur deskriptif), maka dapat segera      | Jika item baru tidak memiliki metadata, maka sistem tidak
-  direkomendasikan.                                                             bisa memproses atau merekomendasikannya. 
-  
-| Sistem dapat dipahami dan ditelusuri, karena rekomendasi didasarkan pada    | Misalnya, pengguna menyukai variasi atau kombinasi fitur 
-  kesamaan fitur item.                                                          tertentu, yang sulit diidentifikasi hanya dari fitur item.
+| **Kelebihan**                                             | **Kekurangan**                                   |
+| --------------------------------------------------------- | ------------------------------------------------ |
+| Rekomendasi sesuai minat pengguna.                        | Butuh metadata yang lengkap.                     |
+| Bisa jalan meski hanya satu pengguna.                     | Kurang bisa eksplor item baru.                   |
+| Item baru bisa langsung direkomendasikan (jika ada data). | Item tanpa metadata tidak bisa direkomendasikan. |
+| Mudah dipahami karena berbasis kesamaan fitur.            | Sulit tangkap selera unik atau kombinasi fitur.  |
+
 
 ## Evaluation
 
