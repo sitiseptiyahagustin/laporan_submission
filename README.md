@@ -10,7 +10,7 @@ Masalah ini perlu diselesaikan karena pemilihan destinasi yang tidak sesuai dapa
 
 Masalah tersebut diselesaikan dengan membangun sistem rekomendasi berbasis machine learning yang menganalisis fitur-fitur tempat wisata seperti deskripsi, kategori, dan kata kunci. Dengan pendekatan content-based filtering dan transformasi teks menggunakan TF-IDF, sistem dapat menghitung kemiripan antar destinasi dan menyarankan pilihan yang relevan kepada pengguna.
 
-Menurut Shrestha et al. [[1] https://doi.org/10.3390/computation12030059], pendekatan berbasis data dan machine learning dapat meningkatkan akurasi rekomendasi destinasi wisata dengan mempertimbangkan preferensi pengguna dan konteks perjalanan. 
+Menurut Shrestha et al. [[1](https://doi.org/10.3390/computation12030059)], pendekatan berbasis data dan machine learning dapat meningkatkan akurasi rekomendasi destinasi wisata dengan mempertimbangkan preferensi pengguna dan konteks perjalanan. 
 
 ## Business Understanding
 
