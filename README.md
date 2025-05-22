@@ -280,41 +280,12 @@ Pada tahap ini, dibangun dan dievaluasi dua sistem rekomendasi yang berbeda, yai
 - Menggabungkan hasil rekomendasi dengan data asli destinasi wisata untuk mendapatkan informasi lengkap seperti nama tempat dan kategori.
 - Mengembalikan sejumlah `k` rekomendasi teratas yang paling mirip dengan destinasi wisata yang diminta.
 
-**Implementasi Kode:**
-
-```python
-def resto_recommendations(wisata_nama, similarity_data=cosine_sim_df, items=data_tourism_with_id_clean[['Place_Name', 'Category']], k=5):
-    """
-    Recommends tourism places based on similarity.
-
-    Args:
-        wisata_nama: The name of the tourism place to find recommendations for.
-        similarity_data: The DataFrame containing the cosine similarity scores.
-        items: The DataFrame containing tourism data (default: data_tourism_with_id_clean).
-        k: The number of recommendations to return.
-
-    Returns:
-        A DataFrame of recommended tourism places.
-    """
-    index = similarity_data.loc[:,wisata_nama].to_numpy().argpartition(
-        range(-1, -k, -1))
-    closest = similarity_data.columns[index[-1:-(k+2):-1]]
-    closest = closest.drop(wisata_nama, errors='ignore')
-
-    return pd.DataFrame(closest).merge(items).head(k)
-```
-
 **Hasil Rekomendasi:**
 
 Sebagai contoh, kami melakukan rekomendasi untuk destinasi wisata **Monumen Nasional**.
 
-| No. | Place Name                     | Category |
---------------------------------------------------|
-| 0   | Monumen Nasional               | Budaya   |
-| 1	  | Monumen Selamat Datang         | Budaya   |
-| 2	  | Monumen Bandung Lautan Api     | Budaya   |
-| 3	  | Monumen Bambu Runcing Surabaya | Budaya   |
-| 4	  | Monumen Tugu Pahlawan	       | Budaya   |
+![image](https://github.com/user-attachments/assets/ff3e3aff-2025-4e44-8c97-59769ecc9672)
+
 
 **Kelebihan dan Kekurangan:**
 
@@ -410,7 +381,7 @@ Terakhir, fungsi ini mengembalikan dua output:
 Berikut implementasi penggunaannya:
 
 ```python
-places_to_evaluate = ['Museum Nasional']
+places_to_evaluate = ['Museum Tekstil']
 recommendation_data = data_tourism_with_id_clean
 
 # Matriks kesamaan berdasarkan Deskripsi + Kategori
@@ -438,30 +409,29 @@ print("\n=== Hasil Evaluasi Precision@10 ===")
 display(evaluation_df)
 ```
 ### Hasil evaluasi
-top-10 
-|**No.**| **Place\_Name**                      | **Category** | **Rating** | **Description\_Similarity** | **Relevance** |
-|-------| ------------------------------------ | ------------ | ---------- | --------------------------- | ------------- |
-|1      | Museum Wayang                        | Budaya       | 4.5        | 0.446066                    | 1             |
-|2      | Museum Macan (Modern and Contemporary) Budaya       | 4.5        | 0.379759                    | 1             |
-|3      | Museum Bahari Jakarta                | Budaya       | 4.4        | 0.358572                    | 1             |
-|4      | Museum Seni Rupa dan Kramik          | Budaya       | 4.4        | 0.454786                    | 1             |
-|5      | Museum Joang 45                      | Budaya       | 4.0        | 0.368159                    | 1             |
-|6      | Museum Sumpah Pemuda                 | Budaya       | 4.7        | 0.382151                    | 1             |
-|7      | Museum Tengah Kebun                  | Budaya       | 4.6        | 0.449185                    | 1             |
-|8      | Museum Sonobudoyo Unit I             | Budaya       | 4.6        | 0.373011                    | 1             |
-|9      | Museum Barli                         | Budaya       | 4.4        | 0.367332                    | 1             |
-|10     | Museum Gedung Sate                   | Budaya       | 4.6        | 0.378406                    | 1             |
+|No\.|Place\_Name|Category|Rating|Description\_Similarity|Relevance|
+|---|---|---|---|---|---|
+|1|Museum Fatahillah|Budaya|4\.4|0\.17420567304382392|1|
+|2|Museum Nasional|Budaya|4\.6|0\.1687590172636903|1|
+|3|Museum Joang 45|Budaya|4\.0|0\.2121821816676367|1|
+|4|Museum Sumpah Pemuda|Budaya|4\.7|0\.15951412287204772|1|
+|5|Museum Tengah Kebun|Budaya|4\.6|0\.20382528666174188|1|
+|6|Museum Satria Mandala|Budaya|4\.5|0\.1797127365577662|1|
+|7|Museum Sri Baduga|Budaya|4\.5|0\.17358723991455843|1|
+|8|Museum Barli|Budaya|4\.4|0\.163835868311756|1|
+|9|Museum Gedung Sate|Budaya|4\.6|0\.2037455521638178|1|
+|10|Museum Mpu Tantular|Budaya|4\.4|0\.18968871883104418|1|
 
 True Positive (TP): 10
 False Positive (FP): 0
-Precision@10 for 'Museum Nasional': 100.00%
+Precision@10 for 'Museum Tekstil': 100.00%
 
 Tabel di atas menunjukkan hasil rekomendasi yang relevan untuk Museum Nasional, dengan seluruh 10 rekomendasi dianggap relevan karena memiliki kesamaan kategori dan deskripsi yang tinggi.
 
-Kesimpulan Evaluasi: Model Content-Based Filtering menunjukkan hasil evaluasi yang sangat baik untuk Museum Nasional, dengan Precision@10 sebesar 100%, yang berarti bahwa seluruh 10 rekomendasi yang diberikan oleh sistem relevan dan sesuai dengan deskripsi dan kategori tempat wisata. Dengan hasil ini, sistem rekomendasi yang digunakan dapat dianggap cukup efektif dalam memberikan rekomendasi yang sesuai dengan preferensi pengguna berdasarkan konten deskripsi dan kategori tempat wisata.
+Kesimpulan Evaluasi: Model Content-Based Filtering menunjukkan hasil evaluasi yang sangat baik untuk Museum Tekstil, dengan Precision@10 sebesar 100%, yang berarti bahwa seluruh 10 rekomendasi yang diberikan oleh sistem relevan dan sesuai dengan deskripsi dan kategori tempat wisata. Dengan hasil ini, sistem rekomendasi yang digunakan dapat dianggap cukup efektif dalam memberikan rekomendasi yang sesuai dengan preferensi pengguna berdasarkan konten deskripsi dan kategori tempat wisata.
 
 ## **Kesimpulan secara menyeluruh**
-- Model Content-Based Filtering telah menunjukkan performa yang sangat baik, dengan Precision@10 sebesar 100%, yang berarti seluruh rekomendasi yang diberikan oleh sistem sepenuhnya relevan dengan entitas yang diuji (Museum Nasional).
+- Model Content-Based Filtering telah menunjukkan performa yang sangat baik, dengan Precision@10 sebesar 100%, yang berarti seluruh rekomendasi yang diberikan oleh sistem sepenuhnya relevan dengan entitas yang diuji (Museum Tekstil).
 
 - Hasil evaluasi memperlihatkan bahwa model mampu mengenali tempat-tempat wisata yang memiliki kesamaan kategori dan deskripsi dengan sangat akurat, terutama dalam domain tempat wisata budaya.
 
